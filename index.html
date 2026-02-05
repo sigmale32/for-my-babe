@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TO MAKE MY BABE AGREE 😌</title>
+
+<!-- ✅ INSTAGRAM / WHATSAPP PREVIEW CONTROL -->
+<meta property="og:title" content="TO MAKE MY BABE AGREE 😌">
+<meta property="og:description" content="Answer honestly… then see what I hid for you ❤️">
+<meta property="og:image" content="https://babe-love.netlify.app/preview.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,#ff6a88,#ff99ac);
+  display:flex;
+  justify-content:center;
+  color:#fff;
+  text-align:center;
+  overflow-y:auto;
+  padding:30px 10px;
+}
+
+.card{
+  background:rgba(255,255,255,0.18);
+  backdrop-filter:blur(10px);
+  padding:25px;
+  border-radius:22px;
+  width:100%;
+  max-width:360px;
+  box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+
+h1{
+  margin-top:0;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border-radius:30px;
+  border:none;
+  outline:none;
+  font-size:16px;
+  text-align:center;
+  margin-top:10px;
+}
+
+button{
+  margin-top:15px;
+  padding:14px 26px;
+  border-radius:30px;
+  border:none;
+  background:#fff;
+  color:#ff4d6d;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+.tease{
+  font-size:14px;
+  margin-top:10px;
+  opacity:.9;
+}
+
+#photoBox{
+  display:none;
+  margin-top:20px;
+}
+
+#photoBox img{
+  width:100%;
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+#downloadBtn{
+  display:none;
+  width:100%;
+}
+
+/* 🎆 CONFETTI */
+.confetti{
+  position:fixed;
+  top:-10px;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  animation:fall linear forwards;
+  z-index:999;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Hey Babe 😏</h1>
+
+  <p class="tease">
+    One question.<br>
+    Get it right… I’ll show you something special ❤️
+  </p>
+
+  <p class="tease">
+    What was the line of the movie 👀
+  </p>
+
+  <input id="answer" placeholder="Type carefully…" />
+
+  <button onclick="checkAnswer()">Submit 💌</button>
+
+  <p id="message" class="tease"></p>
+
+  <!-- 🔒 PRIVATE IMAGE (NOT SHOWN IN PREVIEW) -->
+  <div id="photoBox">
+    <img 
+      src="photo.jpg"
+      alt="For You ❤️"
+      loading="lazy"
+      referrerpolicy="no-referrer"
+    >
+  </div>
+
+  <button id="downloadBtn" onclick="downloadImage()">
+    📥 Download This Memory
+  </button>
+</div>
+
+<script>
+const correctAnswers = [
+  "ten",
+  "Ten",
+  "TEN"
+];
+
+function checkAnswer(){
+  const input = document.getElementById("answer").value.trim().toLowerCase();
+  const msg = document.getElementById("message");
+
+  if(correctAnswers.includes(input)){
+    msg.innerText = "My babe is only mine 😌❤️";
+
+    document.getElementById("photoBox").style.display = "block";
+    document.getElementById("downloadBtn").style.display = "block";
+
+    confettiBoom();
+
+    if(navigator.vibrate){
+      navigator.vibrate([200,100,200,100,300]);
+    }
+
+    document.getElementById("downloadBtn")
+      .scrollIntoView({behavior:"smooth"});
+
+  } else {
+    msg.innerText = "Nope 😈 Try again… I know you know it";
+    document.getElementById("photoBox").style.display = "none";
+    document.getElementById("downloadBtn").style.display = "none";
+  }
+}
+
+function downloadImage(){
+  const a = document.createElement("a");
+  a.href = "photo.jpg";
+  a.download = "For_My_Babe❤️.jpg";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+function confettiBoom(){
+  for(let i=0;i<80;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=`hsl(${Math.random()*360},80%,60%)`;
+    c.style.animationDuration=(2+Math.random()*2)+"s";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4000);
+  }
+}
+</script>
+
+</body>
+</html>
